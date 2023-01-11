@@ -2,10 +2,21 @@
 #### 项目介绍
 蛋糕商城是基于萤火商城V2.0开源版进行的一个的开发。前端是使用的萤火商城的yoshop2.0-uniapp的项目
 ，后端采用的是JAVA开进行开发一也是为了检验自己的技术。
-###配置文件
+### 须知
+前端的code没有进行改变的，只要是后端使用java进行实现，在没有完全了解的情况下不建议改动前端的code
+除非你是您熟悉前端的code。
+
+### 配置文件
 Clone是缺少了application.yml和application-dev.yml两个文件的 如果有需要在issues提出
 
-###萤火商城V2.0开源版链接
+
+
+# 进度
+##【2023-01-10】
+&emsp;&emsp;  获取region Tree的实现
+![2023-01-10 234851](C:\Users\junbaobao\Desktop\2023-01-10 234851.png)
+
+### 萤火商城V2.0开源版链接
 
 1. 主商城端（又称后端、服务端，PHP开发 用于管理后台和提供api接口）
 
@@ -37,12 +48,7 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 - JAVA8
 - Maven
 - MySQL 5.6+
-
-#进度
-##【2023-01-10】
-&emsp;&emsp;  获取region Tree的实现
-![2023-01-10 234851](C:\Users\junbaobao\Desktop\2023-01-10 234851.png)
-
+- Redis
 
 #### 安全&缺陷
 
@@ -51,7 +57,8 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 如果有BUG或者安全问题，我们会第一时间修复。
 
 
-
+### 感谢
+感谢萤火提供的前端代码谢谢！
 
 #### 版权须知
 
