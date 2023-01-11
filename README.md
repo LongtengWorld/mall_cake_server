@@ -13,8 +13,9 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 
 # 进度
 ##【2023-01-10】
-&emsp;&emsp;  获取region Tree的实现
-![2023-01-10 234851](C:\Users\junbaobao\Desktop\2023-01-10 234851.png)
+    获取region Tree的实现
+
+![Tree的实现](https://raw.githubusercontent.com/Den-Jun/image/master/images202301112252936.png "Tree的实现")
 
 ### 萤火商城V2.0开源版链接
 
