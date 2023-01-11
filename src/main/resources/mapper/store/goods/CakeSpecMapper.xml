@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junbaobao.mall.store.goods.mapper.CakeSpecMapper">
+    <select id="getCakeSpecList" resultMap="getCakeStoreSpecList">
+        SELECT *
+        FROM cake_goods_spec_rel cgsr
+                 LEFT JOIN cake_spec cs on cgsr.spec_id = cs.spec_id
+        WHERE cgsr.goods_id = #{goodsId}
+        GROUP BY cgsr.spec_id  ORDER BY id
+    </select>
+
+
+    <resultMap id="getCakeStoreSpecList" type="com.junbaobao.mall.store.goods.entity.Do.CakeSpecDo">
+        <result property="specId" column="spec_id" javaType="int"/>
+
+        <collection property="specValueList" ofType="com.junbaobao.mall.store.goods.entity.Do.CakeSpecValueDo"
+                    select="com.junbaobao.mall.store.goods.mapper.CakeSpecValueMapper.getCakeSpecValueList" column="{specId=spec_id,goodsId =goods_id}" />
+
+    </resultMap>
+
+
+
+
+    <resultMap id="cakeSpecMap" type="com.junbaobao.mall.store.goods.entity.Do.CakeSpecDo">
+        <result column="spec_id" property="specId"/>
+        <result column="spec_name" property="specName"/>
+        <result column="store_id" property="storeId"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+</mapper>
+
+

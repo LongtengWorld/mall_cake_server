@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.junbaobao.mall.api.address.mapper.CakeRegionMapper">
+    <select id="getRegionTree" resultMap="getRegionTreeDo">
+        select *
+        from cake_region
+        where pid = #{id}
+        ORDER BY id
+    </select>
+
+    <select id="getRegionCity" resultType="com.junbaobao.mall.api.address.entity.Vo.RegionCityVo">
+        select *
+        from cake_region
+        where pid = #{id}
+        ORDER BY id
+    </select>
+
+    <select id="getRegion" resultType="com.junbaobao.mall.api.address.entity.Vo.RegionVo">
+        select *
+        from cake_region
+        where pid = #{id}
+        ORDER BY id
+    </select>
+
+
+    <resultMap id="getRegionTreeDo" type="com.junbaobao.mall.api.address.entity.Vo.RegionTreeVo">
+    </resultMap>
+
+
+    <resultMap id="cakeRegionMap" type="com.junbaobao.mall.api.address.entity.Do.CakeRegionDo">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="pid" property="pid"/>
+        <result column="code" property="code"/>
+        <result column="level" property="level"/>
+    </resultMap>
+</mapper>
+
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.store.goods.mapper.CakeGoodsSkuMapper">
+
+    <select id="listGoodsSku" resultType="com.junbaobao.mall.store.goods.entity.Do.CakeGoodsSkuDo">
+        SELECT
+            csgs.*
+        FROM
+            cake_goods cg
+                LEFT JOIN cake_goods_sku csgs ON cg.goods_id = csgs.goods_id
+        WHERE
+            cg.goods_id = #{goodsId}
+          AND cg.is_delete = 1
+
+
+
+    </select>
+
+
+
+
+
+    <resultMap id="cakeGoodsSkuMap" type="com.junbaobao.mall.store.goods.entity.Do.CakeGoodsSkuDo">
+            <result column="id" property="id"/>
+            <result column="goods_sku_id" property="goodsSkuId"/>
+            <result column="goods_id" property="goodsId"/>
+            <result column="image_id" property="imageId"/>
+            <result column="goods_sku_no" property="goodsSkuNo"/>
+            <result column="goods_price" property="goodsPrice"/>
+            <result column="line_price" property="linePrice"/>
+            <result column="stock_num" property="stockNum"/>
+            <result column="goods_weight" property="goodsWeight"/>
+            <result column="goods_props" property="goodsProps"/>
+            <result column="spec_value_ids" property="specValueIds"/>
+            <result column="store_id" property="storeId"/>
+            <result column="create_time" property="createTime"/>
+            <result column="update_time" property="updateTime"/>
+    </resultMap>
+
+</mapper>
+
+

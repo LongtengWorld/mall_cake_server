@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.api.address.mapper.CakeUserAddressMapper">
+    <select id="getAddressById" resultMap="userAddressDo">
+        SELECT *
+        FROM cake_user_address
+        WHERE address_id = #{addressId}
+    </select>
+
+
+    <resultMap id="userAddressDo" type="com.junbaobao.mall.api.address.entity.Do.CakeUserAddressDo">
+        <id property="addressId" column="address_id"></id>
+        <result property="regionId" column="region_id"></result>
+        <collection property="region" ofType="com.junbaobao.mall.api.address.entity.AddressRegion"
+                    select="getAddressRegion" column="region_id"/>
+    </resultMap>
+
+
+    <select id="getAddressRegion" resultType="com.junbaobao.mall.api.address.entity.AddressRegion">
+        SELECT cr2.name as city,
+               cr1.name as province,
+               cr.name  as region
+        FROM cake_region cr
+                 LEFT JOIN cake_region cr1 on cr.pid = cr1.id
+                 LEFT JOIN cake_region cr2 on cr1.pid = cr2.id
+        WHERE cr.id = #{region_id}
+    </select>
+
+    <select id="getUserAddressList" resultMap="userAddressDo">
+        SELECT *
+        FROM cake_user_address
+        WHERE user_id = #{userId}
+    </select>
+</mapper>

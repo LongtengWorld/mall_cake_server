@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.store.goods.mapper.CakeCategoryMapper">
+    <select id="getCategoryList" resultType="com.junbaobao.mall.store.goods.entity.Do.CakeCategoryDo">
+        SELECT
+           *
+        FROM
+            cake_category
+        WHERE
+            STATUS = 1
+        ORDER BY
+            sort
+    </select>
+
+    <select id="getGoodsCategoryId" resultType="int" parameterType="string">
+
+        SELECT
+            cc.category_id
+        FROM
+            cake_goods cg
+                LEFT JOIN cake_goods_category_rel cgc ON cg.goods_id = cgc.goods_id
+                LEFT JOIN cake_category cc on cgc.category_id = cc.category_id
+        WHERE
+            cg.goods_id = 10007
+
+    </select>
+</mapper>

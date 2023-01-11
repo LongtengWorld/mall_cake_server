@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.store.goods.mapper.CakeSpecValueMapper">
+    <select id="getCakeSpecValueList"
+            resultType="com.junbaobao.mall.store.goods.entity.Do.CakeSpecValueDo">
+        SELECT *
+        FROM cake_goods_spec_rel csgsr
+                 LEFT JOIN cake_spec_value cssv ON csgsr.spec_value_id = cssv.spec_value_id
+        WHERE csgsr.spec_id = #{specId} and  csgsr.goods_id = #{goodsId}
+    </select>
+</mapper>

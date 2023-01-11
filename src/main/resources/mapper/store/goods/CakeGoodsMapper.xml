@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.store.goods.mapper.CakeGoodsMapper">
+    <select id="getGoodsList" resultMap="getGoodsList" parameterType="int">
+        SELECT cg.*
+        FROM cake_goods cg
+        <if test=" categoryId!=0 ">
+            LEFT JOIN cake_goods_category_rel cgcr on  cgcr.goods_id = cg.goods_id
+        </if>
+        WHERE cg.is_delete = 1
+        <if test="goodsId !=0 ">
+            and cg.goods_id = #{goodsId}
+        </if>
+        <if test="goodsName != null ">
+            and cg.goods_name LIKE CONCAT('%', #{goodsName},'%')
+        </if>
+        <if test=" categoryId!=0 ">
+            AND cgcr.category_id = #{categoryId}
+        </if>
+        ORDER BY sort
+    </select>
+
+    <resultMap id="getGoodsList" type="com.junbaobao.mall.store.goods.entity.Do.CakeGoodsDo">
+        <result property="goodsId" column="goods_id"/>
+        <collection property="goodsImages" ofType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo"
+                    select="com.junbaobao.mall.store.file.mapper.CakeUploadFileMapper.getByGoodsId" column="goods_id"/>
+
+        <collection property="videoCover" ofType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo"
+                    select="com.junbaobao.mall.store.file.mapper.CakeUploadFileMapper.getByFileId"
+                    column="video_cover_id"/>
+
+        <collection property="video" ofType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo"
+                    select="com.junbaobao.mall.store.file.mapper.CakeUploadFileMapper.getByFileId" column="video_id"/>
+    </resultMap>
+
+
+    <select id="getPageGoodsList" resultType="com.junbaobao.mall.store.goods.entity.Do.CakeGoodsDo">
+        SELECT cg.goods_id,
+               goods_name,
+               goods_price_max,
+               goods_price_min,
+               line_price_max,
+               line_price_min,
+               selling_point,
+               (sales_initial + sales_actual) AS goods_sales
+        FROM cake_goods cg
+
+        WHERE cg.`status` = 10
+          AND cg.is_delete = 1
+            LIMIT #{showNum}
+    </select>
+
+
+    <!--    <select id="getGoodsFile" resultMap="GoodsImages" parameterType="int">-->
+    <!--       SELECT-->
+    <!--	       * ,cpf.id as fileId-->
+    <!--       FROM-->
+    <!--	   cake_upload_file cpf where is_delete  = 1 and id =  #{video_cover_id}-->
+    <!--    </select>-->
+
+    <!--    <resultMap id="GoodsImages" type="com.junbaobao.store.goods.entity.Do.CakeUploadFileDo">-->
+    <!--        <id property="id" column="id"/>-->
+    <!--        <result property="fileId" column="fileId"/>-->
+    <!--        <result property="groupId" column="group_id"/>-->
+    <!--        <result property="channel" column="channel"/>-->
+    <!--        <result property="storage" column="storage"/>-->
+    <!--        <result property="domain" column="domain"/>-->
+    <!--        <result property="fileType" column="file_type"/>-->
+    <!--        <result property="fileName" column="file_name"/>-->
+    <!--        <result property="filePath" column="file_path"/>-->
+    <!--        <result property="fileSize" column="file_size"/>-->
+    <!--        <result property="fileExt" column="file_ext"/>-->
+    <!--        <result property="cover" column="cover"/>-->
+    <!--        <result property="uploaderId" column="uploader_id"/>-->
+    <!--        <result property="isRecycle" column="is_recycle"/>-->
+    <!--        <result property="storeId" column="store_id"/>-->
+    <!--    </resultMap>-->
+</mapper>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.junbaobao.mall.store.file.mapper.CakeUploadFileMapper">
+
+
+
+    <select id="getFileList" resultType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo">
+        SELECT *,
+               CONCAT(cpf.domain, '/', cpf.file_path) AS externalUrl,
+               (
+                   CASE cpf.file_ext
+                       WHEN
+                           '.mp4'
+                           THEN
+                           'https://cake-image-1308182381.cos.ap-guangzhou.myqcloud.com/video.png'
+                       ELSE
+
+                           CONCAT(cpf.domain, '/', cpf.file_path)
+                       END
+               )
+                   AS preview_url
+
+        FROM cake_upload_file cpf
+        WHERE cpf.channel = #{channel}
+          AND cpf.file_type = #{fileType}
+          AND group_id = #{groupId}
+          and cpf.is_recycle = 1
+          and cpf.is_delete = 1
+    </select>
+
+    <select id="getByFileId" resultType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo">
+        SELECT *,
+               CONCAT(cpf.domain, '/', cpf.file_path) AS externalUrl,
+               (
+                   CASE cpf.file_ext
+                       WHEN
+                           '.mp4'
+                           THEN
+                           'https://cake-image-1308182381.cos.ap-guangzhou.myqcloud.com/video.png'
+                       ELSE
+
+                           CONCAT(cpf.domain, '/', cpf.file_path)
+                       END
+                   )
+                   AS preview_url
+        FROM cake_upload_file cpf
+        WHERE cpf.file_id = #{fileId}
+          and cpf.is_recycle = 1
+          and cpf.is_delete = 1
+    </select>
+    <select id="getByGoodsId" resultType="com.junbaobao.mall.store.file.entity.Do.CakeUploadFileDo">
+        SELECT *,
+               CONCAT(cpf.domain, '/', cpf.file_path) AS externalUrl,
+               (
+                   CASE cpf.file_ext
+                       WHEN
+                           '.mp4'
+                           THEN
+                           'https://cake-image-1308182381.cos.ap-guangzhou.myqcloud.com/video.png'
+                       ELSE
+                           CONCAT(cpf.domain, '/', cpf.file_path)
+                       END
+                   )
+                                                      AS preview_url
+        FROM cake_goods_image cgi
+                 LEFT JOIN cake_upload_file cpf ON cpf.file_id = cgi.image_id
+        WHERE cpf.is_delete = 1
+          AND cgi.goods_id = #{goods_id}
+    </select>
+</mapper>
