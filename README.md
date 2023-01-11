@@ -13,7 +13,7 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 
 # 进度
 ##【2023-01-10】
-    获取region Tree的实现
+获取region Tree的实现
 
 ![Tree的实现](https://raw.githubusercontent.com/Den-Jun/image/master/images202301112252936.png "Tree的实现")
 
