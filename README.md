@@ -23,19 +23,18 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 
    已经实现页面的编辑，分类，商品的逻辑
 
-   
-## 【2023-01-10】
-
-获取region Tree的实现
-
-![Tree的实现](https://raw.githubusercontent.com/Den-Jun/image/master/images202301112252936.png "Tree的实现")
-
 ## 【2023-01-11】
 
 实现收货地址的功能，修改user默认地址
 
 ![收货地址](https://raw.githubusercontent.com/Den-Jun/image/master/images202301122240286.png "收货地址")
 
+
+## 【2023-01-10】
+
+获取region Tree的实现
+
+![Tree的实现](https://raw.githubusercontent.com/Den-Jun/image/master/images202301112252936.png "Tree的实现")
 
 
 ### 萤火商城V2.0开源版链接
