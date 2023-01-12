@@ -221,4 +221,12 @@ public class CakeUserServiceImpl extends ServiceImpl<CakeUserMapper, CakeUserDo>
     public CakeUserDo getUserInfoByUserId(int userId) {
         return cakeUserMapper.selectById(userId);
     }
+
+    @Override
+    public int updUserDefaultAddress(int userId, int addressId) {
+        CakeUserDo cakeUserDo = new CakeUserDo();
+        cakeUserDo.setAddressId(addressId);
+        cakeUserDo.setUserId(userId);
+        return cakeUserMapper.updateById(cakeUserDo);
+    }
 }

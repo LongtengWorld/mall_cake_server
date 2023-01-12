@@ -9,6 +9,8 @@
 ### 配置文件
 Clone是缺少了application.yml和application-dev.yml两个文件的 如果有需要在issues提出
 
+# 明日计划
+开始实现订单的处理（提交订单（暂不处理付款））
 
 
 # 进度
@@ -27,6 +29,14 @@ Clone是缺少了application.yml和application-dev.yml两个文件的 如果有�
 获取region Tree的实现
 
 ![Tree的实现](https://raw.githubusercontent.com/Den-Jun/image/master/images202301112252936.png "Tree的实现")
+
+## 【2023-01-11】
+
+实现收货地址的功能，修改user默认地址
+
+![收货地址](https://raw.githubusercontent.com/Den-Jun/image/master/images202301122240286.png "收货地址")
+
+
 
 ### 萤火商城V2.0开源版链接
 

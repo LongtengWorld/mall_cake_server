@@ -1,7 +1,9 @@
 package com.junbaobao.mall.api.address.entity.Do;
 
 import cn.hutool.core.annotation.Alias;
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.junbaobao.mall.api.address.entity.AddressRegion;
 import io.swagger.annotations.ApiModel;
@@ -21,6 +23,7 @@ public class CakeUserAddressDo {
      * 主键ID
      */
     @ApiModelProperty(value = "主键ID")
+    @TableId(value="address_id",type= IdType.AUTO)
     private Integer addressId;
     /**
      * 收货人姓名

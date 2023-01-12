@@ -31,5 +31,7 @@ public interface CakeUserService {
 
 
     CakeUserDo getUserInfoByUserId(int userId);
+
+    int updUserDefaultAddress(int userId,int addressId);
 }
 

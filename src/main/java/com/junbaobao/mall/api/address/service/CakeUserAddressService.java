@@ -1,6 +1,7 @@
 package com.junbaobao.mall.api.address.service;
 
 import com.junbaobao.mall.api.address.entity.Do.CakeUserAddressDo;
+import com.junbaobao.mall.api.address.entity.Dto.ApiAddressEditDto;
 
 import java.util.List;
 
@@ -19,5 +20,15 @@ public interface CakeUserAddressService  {
 
 
   List<CakeUserAddressDo> getUserAddressList(int userId);
+
+
+  CakeUserAddressDo getUserAddressDetail(int userId,int addressId);
+
+  int userAddressEdit(int userId, ApiAddressEditDto apiAddressEditDto);
+
+  int userAddressAdd(int userId, ApiAddressEditDto apiAddressEditDto);
+
+
+
 }
 
